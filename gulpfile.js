@@ -134,7 +134,7 @@ const add = done => {
     console.log(argv.production)
     exec('git add .', function (err, stdout, stderr) {
         if (err) throw err
-        console.log(stdout)
+        process.stderr.write(stdout);
         done()
     });
 }
@@ -148,7 +148,7 @@ const commit = done => {
     }
     exec('git commit -m ' + `"${commitcon}"`, function (err, stdout, stderr) {
         if (err) throw err
-        console.log(stdout)
+        process.stderr.write(stdout);
         done()
     });
 };
@@ -156,7 +156,7 @@ const commit = done => {
 const push = done => {
     exec('git push', function (err, stdout, stderr) {
         if (err) throw err
-        console.log(stdout)
+        process.stderr.write(stdout);
         done()
     });
 };
