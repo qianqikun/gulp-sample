@@ -117,7 +117,7 @@ const develop = () => {
 }
 const useref = () => {
     return src(config.build.paths.pages, { base: config.build.temp, cwd: config.build.temp })
-        .pipe(plugins.useref({ searchPath: [config.build.temp, '.'] }))
+        .pipe(plugins.useref({ searchPath: [config.build.temp, '.', '..'] }))
         .pipe(plugins.if(/\.js$/, plugins.uglify()))
         .pipe(plugins.if(/\.css$/, plugins.cleanCss()))
         .pipe(plugins.if(/\.html$/, plugins.htmlmin({
@@ -127,7 +127,6 @@ const useref = () => {
         })))
         .pipe(dest(config.build.dist))
 }
-
 
 
 const add = done => {
