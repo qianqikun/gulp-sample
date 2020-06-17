@@ -139,14 +139,14 @@ const add = done => {
     });
 }
 const commit = done => {
-    let commitdefault = '"打包提交"'
+    let commitdefault = '打包提交'
     let commitcon
     if (!argv.production) {
         commitcon = commitdefault
     } else {
         commitcon = argv.production
     }
-    exec('git commit -m ' + commitcon, function (err, stdout, stderr) {
+    exec('git commit -m ' + `"${commitcon}"`, function (err, stdout, stderr) {
         if (err) throw err
         console.log(stdout)
         done()
